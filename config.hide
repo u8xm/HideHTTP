@@ -1,0 +1,10 @@
+# config.hide pour HideHTTP
+# Syntaxe simple key=value
+# Default commands concept "npm-like" (hors programme) :
+# start -> ./HideHTTP --config config.hide
+
+port=3200
+root=.
+index=index.html
+timeout=5
+keepalive=1
