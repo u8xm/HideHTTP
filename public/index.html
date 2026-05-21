@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HideHTTP WebServer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <main class="container">
+        <header class="header-container">
+            <pre class="ascii-art">
+  _    _ _     _      _    _ _______ _______ _____  
+ | |  | (_)   | |    | |  | |__   __|__   __|  __ \ 
+ | |__| |_  __| | ___| |__| |  | |     | |  | |__) |
+ |  __  | |/ _` |/ _ \  __  |  | |     | |  |  ___/ 
+ | |  | | | (_| |  __/ |  | |  | |     | |  | |     
+ |_|  |_|_|\__,_|\___|_|  |_|  |_|     |_|  |_|     
+            </pre>
+            <h2 class="glitch-text" data-text="WebServer">WebServer</h2>
+        </header>
+
+        <section class="content">
+            <p>
+                Welcome to <strong class="highlight">HideHTTP</strong>,<br>
+                a lightweight webserver built in <strong class="highlight">C</strong>,<br>
+                developed by <span class="author">u8xm</span>.
+            </p>
+        </section>
+
+        <footer class="actions">
+            <a href="#" class="btn-primary" onclick="showToast()">Documentation</a>
+        </footer>
+    </main>
+
+    <div id="toast" class="toast">Action not available.</div>
+
+    <script>
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('visible');
+            setTimeout(() => { toast.classList.remove('visible'); }, 3000);
+        }
+    </script>
+</body>
+</html>
