@@ -1,10 +1,10 @@
 # HideHTTP
 
-A minimal HTTP/HTTPS server written in C with an embedded homepage.
+A minimal HTTP/HTTPS server written in C with a homepage embedded directly in the binary.
 
 ## Usage
 
-Requirements: `gcc`, `make`, OpenSSL and `xxd`.
+Requirements: `gcc`, `make` and OpenSSL.
 
 ```sh
 make
@@ -18,3 +18,5 @@ HTTP is enabled by default. To enable HTTPS:
 ```
 
 Useful options: `--port`, `--root`, `--https-port`, `--cert`, `--key`.
+
+The built-in homepage works even when `assets/` is not present.

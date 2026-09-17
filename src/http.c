@@ -4,7 +4,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "../include/http.h"
-#include "../include/embedded_assets.h"
+#include "../include/default_page.h"
 #include "../include/utils.h"
 
 #define BUF_SIZE 8192
@@ -72,12 +72,8 @@ void handle_request(ClientConn client, const char *root) {
     if (fd < 0) {
         if (strcmp(path, "/") == 0) {
             send_response(client, "200 OK", "text/html; charset=utf-8",
-                method[0] == 'H' ? NULL : (const char *) embedded_index_html,
-                (long) embedded_index_html_len);
-        } else if (strcmp(path, "/style.css") == 0) {
-            send_response(client, "200 OK", "text/css; charset=utf-8",
-                method[0] == 'H' ? NULL : (const char *) embedded_style_css,
-                (long) embedded_style_css_len);
+                method[0] == 'H' ? NULL : default_page_html,
+                (long) default_page_html_len);
         } else {
             send_response(client, "404 Not Found", "text/plain; charset=utf-8", "Not Found", 9);
         }

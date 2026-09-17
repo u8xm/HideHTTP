@@ -4,11 +4,9 @@ CPPFLAGS ?= -Iinclude
 LDLIBS ?= -lssl -lcrypto
 
 TARGET := bin/hidehttp
-GENERATED_DIR := build/generated
 OBJECT_DIR := build/obj
-EMBEDDED := $(GENERATED_DIR)/embedded_assets.c
 SOURCES := $(wildcard src/*.c)
-OBJECTS := $(patsubst src/%.c,$(OBJECT_DIR)/%.o,$(SOURCES)) $(OBJECT_DIR)/embedded_assets.o
+OBJECTS := $(patsubst src/%.c,$(OBJECT_DIR)/%.o,$(SOURCES))
 
 .PHONY: all clean run
 
@@ -18,15 +16,7 @@ $(TARGET): $(OBJECTS)
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
-$(EMBEDDED): assets/web/index.html assets/web/style.css scripts/embed-assets.sh
-	mkdir -p $(dir $@)
-	sh scripts/embed-assets.sh $@ assets/web/index.html assets/web/style.css
-
-$(OBJECT_DIR)/%.o: src/%.c $(EMBEDDED)
-	mkdir -p $(dir $@)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
-
-$(OBJECT_DIR)/embedded_assets.o: $(EMBEDDED)
+$(OBJECT_DIR)/%.o: src/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
