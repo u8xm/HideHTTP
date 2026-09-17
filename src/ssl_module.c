@@ -11,7 +11,7 @@ SSL_CTX* init_ssl_context(const char *cert_file, const char *key_file) {
     SSL_CTX *ctx = SSL_CTX_new(method);
 
     if (!ctx) {
-        perror("Impossible de créer le contexte SSL");
+        perror("Failed to create SSL context");
         ERR_print_errors_fp(stderr);
         return NULL;
     }
