@@ -1,0 +1,6 @@
+bin/
+build/
+*.o
+hidehttp
+server.crt
+server.key
